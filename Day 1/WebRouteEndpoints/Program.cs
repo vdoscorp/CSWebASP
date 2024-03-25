@@ -9,12 +9,17 @@ namespace WebRouteEndpoints
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints => {
+            /*app.UseEndpoints(endpoints => {
                 endpoints.MapGet("/api/people",async context => 
                     context.Response.WriteAsJsonAsync(Person.All));
                 endpoints.MapGet("/api/person/{id:int}", async context =>
                     context.Response.WriteAsJsonAsync(Person.All));
-            });
+            });*/
+
+            app.MapGet("/api/people", async context =>
+                await context.Response.WriteAsJsonAsync(Person.All));
+            app.MapGet("/api/person/{id:int}", async (HttpContext context,int id) =>
+                await context.Response.WriteAsync(id.ToString()));
 
             app.Run();
         }
