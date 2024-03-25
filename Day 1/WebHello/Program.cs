@@ -42,11 +42,20 @@ namespace WebHello
 
             app.UseMiddleware<SecondMiddleware>();
 
-            app.UseWhen(context => context.Request.Path == "/time",
+            /*app.UseWhen(context => context.Request.Headers.ContainsKey("Time"),
                 appBuilder => {
                     appBuilder.Use(async (context, next) =>
                     {
                         await context.Response.WriteAsync("UseWhen() /time");
+                        await next();
+                    });
+                });*/
+
+            app.MapWhen(context => context.Request.Headers.ContainsKey("Time"),
+                appBuilder => {
+                    appBuilder.Use(async (context, next) =>
+                    {
+                        await context.Response.WriteAsync("MapWhen() /time");
                         await next();
                     });
                 });
