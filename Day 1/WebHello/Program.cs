@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.FileProviders;
 using System.ComponentModel.Design.Serialization;
 using System.Net;
 
@@ -14,6 +15,11 @@ namespace WebHello
             var app = builder.Build();
 
             app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions() { 
+                FileProvider = new PhysicalFileProvider( 
+                    Path.Combine(builder.Environment.ContentRootPath, "MyStatic"))
+            });
 
             app.Map("/test", appBuilder => {
                 appBuilder.Run(async context =>
