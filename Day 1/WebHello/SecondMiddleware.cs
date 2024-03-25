@@ -11,7 +11,7 @@
         public async Task Invoke(HttpContext context)
         {
             await context.Response.WriteAsync($"Status code = {context.Response.StatusCode}");
-            await _next(context);
+            //await _next(context);
         }
     }
 }
