@@ -9,9 +9,10 @@ namespace WebRouteEndpoints
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
 
+            /*
             app.UseRouting();
 
-            /*app.UseEndpoints(endpoints => {
+            app.UseEndpoints(endpoints => {
                 endpoints.MapGet("/api/people",async context => 
                     context.Response.WriteAsJsonAsync(Person.All));
                 endpoints.MapGet("/api/person/{id:int}", async context =>
@@ -20,15 +21,34 @@ namespace WebRouteEndpoints
 
             app.MapGet("/api/people", async context =>
                 await context.Response.WriteAsJsonAsync(Person.All));
-            app.MapGet("/api/person/{name}", async (HttpContext context,string name) =>
+            app.MapGet("/api/person/{id:int}", async (HttpContext context,int id) =>
             {
-            var list = Person.All.Where(p => p.Name == name).ToList();
+            Person p = Person.All.Where(p => p.Id == id).SingleOrDefault();
+                if (p != null)
+                    await context.Response.WriteAsJsonAsync(p);
+                else
+                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+            });
+            app.MapGet("/api/person/{search}", async (HttpContext context, string search) =>
+            {
+                var list = Person.All.Where(p => p.Name.Contains(search)).ToList();
                 if (list.Any())
                     await context.Response.WriteAsJsonAsync(list);
                 else
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
             });
-            
+            app.MapDelete("api/person/{id:int}", async (HttpContext context, int id) =>
+            {
+                Person p = Person.All.Where(p => p.Id == id).SingleOrDefault();
+                if (p != null)
+                {
+                    Person.All.Remove(p);
+                    context.Response.StatusCode = (int)HttpStatusCode.OK;
+                }
+                else
+                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+            });
+
             app.Run();
         }
     }
