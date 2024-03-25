@@ -4,10 +4,21 @@ namespace WebHello
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            var builder = WebApplication.CreateBuilder(
+                new WebApplicationOptions(){ Args = args });
+
             var app = builder.Build();
 
-            app.MapGet("/", () => "Hello World!");
+            //app.MapGet("/", () => "<h1>Hello World!</h1>");
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Method == HttpMethods.Get)
+                {
+                    context.Response.WriteAsync("start first Middleware");
+                }
+                await next();
+                await context.Response.WriteAsync("end first Middleware");
+            });
 
             app.Run();
         }
