@@ -18,6 +18,11 @@ namespace WebHello
                 await context.Response.SendFileAsync("test.txt"));
             });
 
+            app.Map("/json", appBuilder => {
+                appBuilder.Run(async context =>
+                await context.Response.WriteAsJsonAsync(new { Name = "Sergey", Age = 46 }));
+            });
+
             app.Use(async (context, next) => { // First Middleware
                 if (context.Request.Method == HttpMethods.Get)
                 {
