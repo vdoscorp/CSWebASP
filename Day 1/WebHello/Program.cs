@@ -9,7 +9,10 @@ namespace WebHello
 
             var app = builder.Build();
 
-            
+            app.Map("/date", appBuilder => {
+                appBuilder.Run(async context =>
+                await context.Response.WriteAsync($"Server time: {DateTime.Now.ToShortDateString()}"));
+            });
 
            //app.MapGet("/", () => "<h1>Hello World!</h1>");
            app.Use(async (context, next) => { // First Middleware
