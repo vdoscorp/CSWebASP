@@ -20,15 +20,15 @@ namespace WebRouteEndpoints
 
             app.MapGet("/api/people", async context =>
                 await context.Response.WriteAsJsonAsync(Person.All));
-            app.MapGet("/api/person/{id:int}", async (HttpContext context,int id) =>
+            app.MapGet("/api/person/{name}", async (HttpContext context,string name) =>
             {
-            Person p = Person.All.Where(p => p.Id == id).SingleOrDefault();
-                if (p != null)
-                    await context.Response.WriteAsJsonAsync(p);
+            var list = Person.All.Where(p => p.Name == name).ToList();
+                if (list.Any())
+                    await context.Response.WriteAsJsonAsync(list);
                 else
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
             });
-
+            
             app.Run();
         }
     }
