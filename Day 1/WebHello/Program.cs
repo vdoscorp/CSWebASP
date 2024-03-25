@@ -13,6 +13,11 @@ namespace WebHello
 
             var app = builder.Build();
 
+            app.Map("/test", appBuilder => {
+                appBuilder.Run(async context =>
+                await context.Response.SendFileAsync("test.txt"));
+            });
+
             app.Use(async (context, next) => { // First Middleware
                 if (context.Request.Method == HttpMethods.Get)
                 {
