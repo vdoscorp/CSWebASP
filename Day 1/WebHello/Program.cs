@@ -9,9 +9,9 @@ namespace WebHello
 
             var app = builder.Build();
 
-            app.Run(context => context.Response.WriteAsync("Hello from Run(...)"));
+            
 
-            //app.MapGet("/", () => "<h1>Hello World!</h1>");
+           //app.MapGet("/", () => "<h1>Hello World!</h1>");
            app.Use(async (context, next) => { // First Middleware
                 if (context.Request.Method == HttpMethods.Get)
                 { 
@@ -22,6 +22,9 @@ namespace WebHello
             });
 
             app.UseMiddleware<SecondMiddleware>();
+
+            //Third middleware (terminal)
+            app.Run(context => context.Response.WriteAsync("Hello from Run(...)"));
 
             app.Run();
         }
