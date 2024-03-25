@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Builder;
+using System.ComponentModel.Design.Serialization;
+
 namespace WebHello
 {
     public class Program
@@ -16,6 +19,16 @@ namespace WebHello
                 }
                 await next();
                 await context.Response.WriteAsync("end first Middleware");
+            });
+
+            app.Map("/security", appBuilder =>
+            {
+                // /security/login
+                appBuilder.Map("/login", async ab2 =>
+                    { ab2.Run(async context => await context.Response.WriteAsync("Login page.")); });
+                // /security/register
+                appBuilder.Map("/register", async ab2 =>
+                    { ab2.Run(async context => await context.Response.WriteAsync("Register page.")); });
             });
 
             app.Map("/date", appBuilder => {
