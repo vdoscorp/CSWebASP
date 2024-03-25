@@ -14,8 +14,10 @@ namespace WebHello
 
             var app = builder.Build();
 
-            app.UseStaticFiles();
+            app.UseExceptionHandler("/error.html");
 
+            app.UseStaticFiles(); // wwwroot
+            // MyStatic
             app.UseStaticFiles(new StaticFileOptions() { 
                 FileProvider = new PhysicalFileProvider( 
                     Path.Combine(builder.Environment.ContentRootPath, "MyStatic"))
@@ -34,7 +36,8 @@ namespace WebHello
             app.Use(async (context, next) => { // First Middleware
                 if (context.Request.Method == HttpMethods.Get)
                 {
-                    context.Response.WriteAsync("start first Middleware");
+                    //context.Response.WriteAsync("start first Middleware");
+                    throw new Exception();
                 }
                 await next();
                 await context.Response.WriteAsync("end first Middleware");
