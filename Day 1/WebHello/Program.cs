@@ -13,6 +13,8 @@ namespace WebHello
 
             var app = builder.Build();
 
+            app.UseStaticFiles();
+
             app.Map("/test", appBuilder => {
                 appBuilder.Run(async context =>
                 await context.Response.SendFileAsync("test.txt"));
