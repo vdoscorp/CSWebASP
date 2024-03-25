@@ -16,8 +16,9 @@ namespace WebHello
                 {
                     context.Response.WriteAsync("start first Middleware");
                 }
-                await next();
                 await context.Response.WriteAsync("end first Middleware");
+                await next();
+                
             });
 
             app.Run();
