@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace WebRouteEndpoints
 {
     public class Program
@@ -19,7 +21,13 @@ namespace WebRouteEndpoints
             app.MapGet("/api/people", async context =>
                 await context.Response.WriteAsJsonAsync(Person.All));
             app.MapGet("/api/person/{id:int}", async (HttpContext context,int id) =>
-                await context.Response.WriteAsync(id.ToString()));
+            {
+            Person p = Person.All.Where(p => p.Id == id).SingleOrDefault();
+                if (p != null)
+                    await context.Response.WriteAsJsonAsync(p);
+                else
+                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+            });
 
             app.Run();
         }
