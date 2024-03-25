@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Net;
 
 namespace WebRouteEndpoints
@@ -47,6 +48,13 @@ namespace WebRouteEndpoints
                 }
                 else
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+            });
+
+            app.MapPost("api/person", async (HttpContext context, Person p) =>
+            {
+                p.Id = Person.All.Select(p => p.Id).Max()+1;
+                Person.All.Add(p);
+                await context.Response.WriteAsJsonAsync(p);
             });
 
             app.Run();
