@@ -14,6 +14,7 @@ namespace WebMVC.Controllers
         [Route("courses")]
         public IActionResult List()
         {
+            ViewData["CoursesCount"] = Course.All.Count();
             return View(Course.All);
         }
 
