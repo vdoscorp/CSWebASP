@@ -11,9 +11,9 @@ namespace WebMVC.Controllers
             return View();
         }
 
-        public string Params(string name, int age) {
+        public string ParamsObject(Models.Person p) {
 
-            return $"Data from query name: {name} age: {age}";
+            return $"Data from query name: {p.Name} age: {p.Age}";
         }
 
         public string Info()
