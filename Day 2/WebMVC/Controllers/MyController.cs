@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace WebMVC.Controllers
 {
@@ -16,7 +17,13 @@ namespace WebMVC.Controllers
             if (this.RouteData.Values["id"] != null)
                 id = int.Parse(this.RouteData.Values["id"].ToString());
 
-            return $"Request with id: {id}";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Request with id: {id}");
+
+            foreach (var header in HttpContext.Request.Headers)
+                sb.AppendLine($"{header.Key} : {header.Value}");
+
+            return sb.ToString();
         }
 
         //[ActionName("Hello")]
