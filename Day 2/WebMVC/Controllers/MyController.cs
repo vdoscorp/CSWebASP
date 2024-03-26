@@ -9,6 +9,7 @@ namespace WebMVC.Controllers
             return View();
         }
 
+        [ActionName("Hello")]
         public string Test()
         {
             return "Test Action";
