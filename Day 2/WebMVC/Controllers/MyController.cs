@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text;
+using WebMVC.Filters;
 
 namespace WebMVC.Controllers
 {
+    [MyActionFilter]
     public class MyController : Controller
     {
         [HttpGet]
