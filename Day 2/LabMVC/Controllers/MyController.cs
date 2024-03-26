@@ -1,4 +1,5 @@
 ﻿using LabMVC.Filters;
+using LabMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
@@ -36,6 +37,12 @@ namespace LabMVC.Controllers
                 sb.AppendLine($"{header.Key} : {header.Value}");
 
             return sb.ToString();
+        }
+
+        [Route("peoples")]
+        public IActionResult List()
+        {
+            return View(Person.All);
         }
     }
 }
