@@ -11,6 +11,8 @@ namespace WebMVC.Controllers
             return Json(Course.All);
         }
 
+        [Route("coursesearch/{search}")]
+        [Route("search/{search}")]
         public IActionResult Search(string search)
         {
             return Json(Course.All.Where(c => c.Title.Contains(search, StringComparison.OrdinalIgnoreCase)
