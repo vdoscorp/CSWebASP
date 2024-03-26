@@ -8,5 +8,10 @@ namespace WebMVC.Controllers
         {
             return View();
         }
+
+        public string Test()
+        {
+            return "Test Action";
+        }
     }
 }
