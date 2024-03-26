@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebRouteEndpoints", "WebRou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMVC", "..\Day 2\WebMVC\WebMVC.csproj", "{977E2FFF-FDCB-4BCC-8799-8F30F8843031}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabMVC", "..\Day 2\LabMVC\LabMVC.csproj", "{7F70A6FC-E823-43CD-8BB0-F08139D6C579}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{977E2FFF-FDCB-4BCC-8799-8F30F8843031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{977E2FFF-FDCB-4BCC-8799-8F30F8843031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{977E2FFF-FDCB-4BCC-8799-8F30F8843031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F70A6FC-E823-43CD-8BB0-F08139D6C579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F70A6FC-E823-43CD-8BB0-F08139D6C579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F70A6FC-E823-43CD-8BB0-F08139D6C579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F70A6FC-E823-43CD-8BB0-F08139D6C579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
