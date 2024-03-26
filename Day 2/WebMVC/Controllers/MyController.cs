@@ -9,7 +9,7 @@ namespace WebMVC.Controllers
             return View();
         }
 
-        [ActionName("Hello")]
+        [NonAction]
         public string Test()
         {
             return "Test Action";
