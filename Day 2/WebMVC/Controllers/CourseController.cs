@@ -11,8 +11,14 @@ namespace WebMVC.Controllers
             return Json(Course.All);
         }
 
+        [Route("courses")]
+        public IActionResult List()
+        {
+            return View(Course.All);
+        }
+
         [Route("coursesearch/{search}")]
-        [Route("search/{search}")]
+        [Route("search/{search}")] // higher priority then MapControllerRoute
         public IActionResult Search(string search)
         {
             return Json(Course.All.Where(c => c.Title.Contains(search, StringComparison.OrdinalIgnoreCase)
