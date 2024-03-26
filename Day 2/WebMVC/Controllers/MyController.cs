@@ -11,9 +11,23 @@ namespace WebMVC.Controllers
             return View();
         }
 
-        public string ParamsObject(Models.Person p) {
+        public EmptyResult Void()
+        {
+            return new EmptyResult();
+        }
 
-            return $"Data from query name: {p.Name} age: {p.Age}";
+        public ContentResult ParamsObject(Models.Person p)
+        {
+            var c = new ContentResult();
+            c.Content = $"<h2>Data from query name: {p.Name} age: {p.Age}<h2>";
+            c.ContentType = "text/html";
+            return c;
+        }
+
+        public string Params(string name, int age)
+        {
+
+            return $"Data from query name: {name} age: {age}";
         }
 
         public string Info()
