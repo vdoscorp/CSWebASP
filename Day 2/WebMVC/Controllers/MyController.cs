@@ -11,6 +11,11 @@ namespace WebMVC.Controllers
             return View();
         }
 
+        public string Params(string name, int age) {
+
+            return $"Data from query name: {name} age: {age}";
+        }
+
         public string Info()
         {
             int id = 0;
