@@ -45,6 +45,13 @@ namespace WebMVC.Controllers
             return this.StatusCode(403);
         }
 
+        public IActionResult GetFile()
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "test.txt");
+
+            return PhysicalFile(path, "text/plain");
+        }
+
         public string Params(string name, int age)
         {
 
