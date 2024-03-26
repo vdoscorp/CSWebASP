@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using WebMVC.Models;
 
 namespace WebMVC.Controllers
@@ -14,6 +15,12 @@ namespace WebMVC.Controllers
         {
             return Json(Course.All.Where(c => c.Title.Contains(search, StringComparison.OrdinalIgnoreCase)
             || c.Description.Contains(search, StringComparison.OrdinalIgnoreCase)));
+        }
+
+        [Route("course/{id:int}")]
+        public IActionResult Details(int id)
+        {
+            return Json(Course.All.Where(c => id == c.Id).SingleOrDefault());
         }
     }
 }
