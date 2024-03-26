@@ -24,6 +24,12 @@ namespace WebMVC.Controllers
             return c;
         }
 
+        [ActionName("Json")]
+        public IActionResult JsonAction(Models.Person p)
+        {
+            return this.Json(p);
+        }
+
         public string Params(string name, int age)
         {
 
