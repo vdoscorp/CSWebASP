@@ -30,6 +30,11 @@ namespace WebMVC.Controllers
             return this.Json(p);
         }
 
+        public IActionResult Specialist()
+        {
+            return this.Redirect("http://www.specialist.ru/");
+        }
+
         public string Params(string name, int age)
         {
 
