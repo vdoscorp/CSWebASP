@@ -40,6 +40,11 @@ namespace WebMVC.Controllers
             return this.RedirectToAction("Info");
         }
 
+        public IActionResult Secure()
+        {
+            return this.StatusCode(403);
+        }
+
         public string Params(string name, int age)
         {
 
