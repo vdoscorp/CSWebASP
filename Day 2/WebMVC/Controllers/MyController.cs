@@ -35,6 +35,11 @@ namespace WebMVC.Controllers
             return this.Redirect("http://www.specialist.ru/");
         }
 
+        public IActionResult ToInfo()
+        {
+            return this.RedirectToAction("Info");
+        }
+
         public string Params(string name, int age)
         {
 
