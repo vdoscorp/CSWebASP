@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MyCoins.Models.Coin>
+
+@{
+    ViewData["Title"] = "Coin Page";
+}
+
+<div class="text-center">
+  <h1 class="display-4">Learn My Coins Collection</h1>
+     <h6 class="bg-primary text-white text-center m-2 p-2">My Coins Collection</h6>
+     <div class="m-2">
+	    <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Metal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Denomination)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Metal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Denomination)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+	    </table>
+     </div>
+</div>
