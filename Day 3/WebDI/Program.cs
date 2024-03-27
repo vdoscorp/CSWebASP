@@ -12,12 +12,12 @@ namespace WebDI
 
             var app = builder.Build();
 
-            app.Run(async context => {
+            /*app.Run(async context => {
                 context.Response.ContentType = "text/html;charset=utf8";
                 await context.Response.WriteAsync(app.Services.GetService<IHello>().GetHelloString());
-            });
+            });*/
 
-            //app.UseMiddleware<HelloMiddleware>();
+            app.UseMiddleware<HelloMiddleware>();
 
             app.Run();
         }

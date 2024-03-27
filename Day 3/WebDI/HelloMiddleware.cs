@@ -16,7 +16,9 @@ namespace WebDI
         public async Task Invoke(HttpContext context)
         {
             context.Response.ContentType = "text/html;charset=utf8";
-            await context.Response.WriteAsync(helloSrv.GetHelloString());
+            //await context.Response.WriteAsync(helloSrv.GetHelloString());
+            IHello helloSrv2 = context.RequestServices.GetService<IHello>();
+            await context.Response.WriteAsync(helloSrv2.GetHelloString());
             await _next(context);
         }
     }
