@@ -17,7 +17,7 @@ namespace WebDI
         {
             context.Response.ContentType = "text/html;charset=utf8";
             //await context.Response.WriteAsync(helloSrv.GetHelloString());
-            IHello helloSrv2 = context.RequestServices.GetService<IHello>();
+            IHello helloSrv2 = context.RequestServices.GetRequiredService<IHello>();
             await context.Response.WriteAsync(helloSrv2.GetHelloString());
             await _next(context);
         }

@@ -8,7 +8,7 @@ namespace WebDI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddSingleton<IHello, HelloImpl>();
+            //builder.Services.AddSingleton<IHello, HelloImpl>();
 
             var app = builder.Build();
 
