@@ -9,7 +9,7 @@ namespace WebDI
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddSingleton<IHello, HelloImpl>();
-            builder.Services.AddSingleton<ICounter, CounterImpl>();
+            builder.Services.AddTransient<ICounter, CounterImpl>();
 
             var app = builder.Build();
 

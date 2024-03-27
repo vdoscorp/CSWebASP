@@ -26,7 +26,7 @@ namespace WebDI
 
             conterSrv.Increment();
 
-            await context.Response.WriteAsync(helloSrv3.GetHelloString());
+            await context.Response.WriteAsync(helloSrv3.GetHelloString() + " " + conterSrv.Get());
             await _next(context);
         }
     }
