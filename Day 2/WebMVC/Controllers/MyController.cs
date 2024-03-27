@@ -37,11 +37,6 @@ namespace WebMVC.Controllers
             return this.Redirect("http://www.specialist.ru/");
         }
 
-        public IActionResult ToInfo()
-        {
-            return this.RedirectToAction("Info");
-        }
-
         public IActionResult Secure()
         {
             return this.StatusCode(403);
@@ -60,8 +55,15 @@ namespace WebMVC.Controllers
             return $"Data from query name: {name} age: {age}";
         }
 
-        public string Info()
+        public IActionResult ToInfo()
         {
+            TempData["ToInfoData"] = "Data from ToInfo action";
+            return this.RedirectToAction("Info");
+        }
+
+        public ViewResult Info()
+        {
+            ViewBag.InfoData = "Data from Info action";
             int id = 0;
             if (this.RouteData.Values["id"] != null)
                 id = int.Parse(this.RouteData.Values["id"].ToString());
@@ -72,7 +74,8 @@ namespace WebMVC.Controllers
             foreach (var header in HttpContext.Request.Headers)
                 sb.AppendLine($"{header.Key} : {header.Value}");
 
-            return sb.ToString();
+            ViewBag.MainStr = sb.ToString();
+            return View();
         }
 
         //[ActionName("Hello")]
