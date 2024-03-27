@@ -14,6 +14,9 @@ namespace WebMVC.Controllers
         [HttpPost]
         public IActionResult SayHello(HelloVM m)
         {
+            if (!this.ModelState.IsValid)
+                ViewBag.MyErrorMessage = "Некорректные данные";
+
             return View("Index", m);
         }
 

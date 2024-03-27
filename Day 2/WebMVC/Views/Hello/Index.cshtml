@@ -1,6 +1,10 @@
 ﻿@model HelloVM
 
 <h1>@Model.Hello</h1>
+@if (ViewBag.MyErrorMessage != null)
+{
+    <h2>@ViewBag.MyErrorMessage</h2>   
+}
 <form asp-action="SayHello" method="post">
     <label asp-for="UserName"></label>
     <input asp-for="UserName"/>
