@@ -3,10 +3,12 @@
 <h1>@Model.Hello</h1>
 @if (ViewBag.MyErrorMessage != null)
 {
-    <h2>@ViewBag.MyErrorMessage</h2>   
+    <h2>@ViewBag.MyErrorMessage</h2>
+    @Html.ValidationSummary(false)
 }
 <form asp-action="SayHello" method="post">
     <label asp-for="UserName"></label>
     <input asp-for="UserName"/>
+    @Html.ValidationMessageFor(model=>model.UserName)
     <input type="submit" value="OK"/>
 </form>
