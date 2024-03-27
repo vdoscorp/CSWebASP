@@ -1,3 +1,5 @@
+using WebMVC.Services;
+
 namespace WebMVC
 {
     public class Program
@@ -5,6 +7,8 @@ namespace WebMVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddSingleton<IHello, HelloImpl>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
