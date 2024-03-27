@@ -1,0 +1,8 @@
+﻿@model HelloVM
+
+<h1>@Model.Hello</h1>
+<form asp-action="SayHello" method="post">
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName"/>
+    <input type="submit" value="OK"/>
+</form>
