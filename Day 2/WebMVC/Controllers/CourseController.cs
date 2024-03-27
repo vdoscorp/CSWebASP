@@ -18,7 +18,7 @@ namespace WebMVC.Controllers
             return View(Course.All);
         }
 
-        [Route("coursesearch/{search}")]
+        //[Route("coursesearch/{search}")]
         [Route("search/{search}")] // higher priority then MapControllerRoute
         public IActionResult Search(string search)
         {
