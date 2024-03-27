@@ -18,6 +18,18 @@ public class HomeController : Controller
         return View(new CoinsData().Coins);
     }
 
+    [HttpGet]
+    public IActionResult Edit(Coin c)
+    {
+        return View(c);
+    }
+
+    [HttpPost]
+    public IActionResult Save(Coin c)
+    {
+        return View("Edit",c);
+    }
+
     public IActionResult Privacy()
     {
         return View();

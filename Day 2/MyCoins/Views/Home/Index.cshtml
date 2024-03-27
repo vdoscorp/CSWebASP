@@ -19,6 +19,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Denomination)
                     </th>
+                    <th/>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Denomination)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", item)
                         </td>
                     </tr>
                 }
