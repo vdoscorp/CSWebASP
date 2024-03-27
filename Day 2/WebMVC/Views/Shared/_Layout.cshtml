@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -41,6 +42,10 @@
                 </div>
             </div>
         </nav>
+        <h2>
+@inject IHello helloSrv
+@helloSrv.GetHelloString("")
+        </h2>
     </header>
     <div class="container">
         <environment names="Development">
