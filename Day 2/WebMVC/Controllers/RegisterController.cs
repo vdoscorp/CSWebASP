@@ -9,5 +9,10 @@ namespace WebMVC.Controllers
         {
             return View(new Registration());
         }
+
+        public IActionResult Save(Registration r)
+        {
+            return View("Index", r);
+        }
     }
 }
