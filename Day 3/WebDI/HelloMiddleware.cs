@@ -13,12 +13,18 @@ namespace WebDI
             this.helloSrv=hello;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, IHello helloSrv3)
         {
             context.Response.ContentType = "text/html;charset=utf8";
+
+            //ctor
             //await context.Response.WriteAsync(helloSrv.GetHelloString());
-            IHello helloSrv2 = context.RequestServices.GetRequiredService<IHello>();
-            await context.Response.WriteAsync(helloSrv2.GetHelloString());
+
+            //context
+            //IHello helloSrv2 = context.RequestServices.GetRequiredService<IHello>();
+            //await context.Response.WriteAsync(helloSrv2.GetHelloString());
+
+            await context.Response.WriteAsync(helloSrv3.GetHelloString());
             await _next(context);
         }
     }
