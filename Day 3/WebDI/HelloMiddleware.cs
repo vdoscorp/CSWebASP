@@ -13,7 +13,7 @@ namespace WebDI
             this.helloSrv=hello;
         }
 
-        public async Task Invoke(HttpContext context, IHello helloSrv3)
+        public async Task Invoke(HttpContext context, IHello helloSrv3, ICounter conterSrv)
         {
             context.Response.ContentType = "text/html;charset=utf8";
 
@@ -23,6 +23,8 @@ namespace WebDI
             //context
             //IHello helloSrv2 = context.RequestServices.GetRequiredService<IHello>();
             //await context.Response.WriteAsync(helloSrv2.GetHelloString());
+
+            conterSrv.Increment();
 
             await context.Response.WriteAsync(helloSrv3.GetHelloString());
             await _next(context);
