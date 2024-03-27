@@ -55,14 +55,19 @@ namespace WebMVC.Controllers
             return $"Data from query name: {name} age: {age}";
         }
 
+        [TempData]
+        public string ToInfoData {  get; set; }
+
         public IActionResult ToInfo()
         {
-            TempData["ToInfoData"] = "Data from ToInfo action";
+            //TempData["ToInfoData"] = "Data from ToInfo action";
+            this.ToInfoData = "Data from ToInfo action"; 
             return this.RedirectToAction("Info");
         }
 
         public ViewResult Info()
         {
+            ViewBag.ToInfoData = this.ToInfoData;
             ViewBag.InfoData = "Data from Info action";
             int id = 0;
             if (this.RouteData.Values["id"] != null)
