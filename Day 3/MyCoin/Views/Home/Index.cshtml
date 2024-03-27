@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Coin Collection";
+    @model  IEnumerable<Coin>
+}
+
+<div class="text-center">
+  <h1 class="display-4">Learn My Coins Collection</h1>
+     <h6 class="bg-primary text-white text-center m-2 p-2">My Coins Collection</h6>
+     <div class="m-2">
+	    <table class="table table-sm table-striped table-bordered">
+	      <tbody>
+			<tr> <th>Country</th> 
+				 <th>Year</th>
+				 <th>Metal</th>
+				 <th>Denomination</th>
+				 <th>Comment</th>
+			</tr>
+			    @foreach(Coin c in Model ) {
+	          		<tr>
+						<td>@c.Country</td>
+						<td>@c.Year</td>
+						<td>@c.Metal</td>
+						<td>@c.Denomination</td>
+						<td>@c.Comment</td>
+						<td>
+							<a asp-controller="home" asp-action="byid" asp-route-id="@c?.Id"
+								class="btn btn-sm btn-info text-white">View</a>
+						</td>
+						<td>
+							<a asp-controller="home" asp-action="edit" asp-route-id="@c?.Id"
+								class="btn btn-sm btn-info text-white">Edit</a>
+						</td>
+	         		</tr>
+				}
+	       </tbody>
+	    </table>
+     </div>
+</div>

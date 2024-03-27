@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Edit Page";
+    @model  Coin
+}
+
+<h6 class="bg-primary text-white text-center m-2 p-2">Edit Form</h6>
+
+<form action="/home/save" method="post">
+  <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Id"></label>
+        <input class="form-control" asp-for="Id" readonly />
+
+        <label asp-for="Country"></label>
+        <input class="form-control" asp-for="Country" />
+
+        <label asp-for="Year"></label>
+        <input class="form-control" asp-for="Year" />
+
+        <label asp-for="Metal"></label>
+        <input class="form-control" asp-for="Metal" />
+
+        <label asp-for="Face"></label>
+        <input class="form-control" asp-for="Face" />
+
+        <label asp-for="Denomination"></label>
+        <input class="form-control" asp-for="Denomination" />
+
+        <label asp-for="Comment"></label>
+        <input class="form-control" asp-for="Comment" />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Save</button>
+    <input  type="button" class="btn btn-primary mt-2" value="Cancel" onclick="location.href='@Url.Action("Index")' " />
+</form>
