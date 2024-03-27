@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using WebDI.Services;
 
 namespace WebDI
@@ -11,7 +12,12 @@ namespace WebDI
 
             var app = builder.Build();
 
-            app.UseMiddleware<HelloMiddleware>();
+            app.Run(async context => {
+                context.Response.ContentType = "text/html;charset=utf8";
+                await context.Response.WriteAsync(app.Services.GetService<IHello>().GetHelloString());
+            });
+
+            //app.UseMiddleware<HelloMiddleware>();
 
             app.Run();
         }
