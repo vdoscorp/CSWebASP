@@ -6,6 +6,8 @@ namespace MyCoins.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly static CoinsData _coinsData = new CoinsData();
+
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
@@ -15,7 +17,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View(new CoinsData().Coins);
+        return View(_coinsData.Coins);
     }
 
     [HttpGet]
@@ -27,6 +29,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Save(Coin c)
     {
+        _coinsData.AddOrEditCoin(c);
         return View("Edit",c);
     }
 

@@ -1,3 +1,4 @@
+
 namespace MyCoins.Models;
 
 public class CoinsData {
@@ -10,5 +11,23 @@ public class CoinsData {
         new Coin { Id=6, Country="Italy", Year=1965, Metal="Silver", Face="500 lire", Denomination="500 lire" }
     };
     public IEnumerable<Coin> Coins { get { return coins; } }
-    public void AddCoin(Coin obj)  { coins.Add(obj); } 
+    public void AddCoin(Coin obj)  { coins.Add(obj); }
+
+    internal void AddOrEditCoin(Coin obj)
+    {
+        var coin = coins.Single(c => c.Id == obj.Id);
+        if (coin != null)
+        {
+            coin.Country = obj.Country;
+            coin.Year = obj.Year;
+            coin.Metal = obj.Metal;
+            coin.Face = obj.Face;
+            coin.Denomination = obj.Denomination;
+        }
+        else
+        {
+            AddCoin(obj);
+        }
+
+    }
 }
