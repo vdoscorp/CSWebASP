@@ -2,7 +2,7 @@
 
 namespace MyCoin.Services
 {
-    public class CoinsDataImpl : ICoinsData
+    public class CoinsData : ICoinsData
     {
         private List<Coin> coins = new List<Coin> {
             new Coin { Id=1, Country="Italy", Year=1973, Metal="Aluminum",
