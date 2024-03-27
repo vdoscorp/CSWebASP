@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebMVC.Views.Validators;
 
 namespace WebMVC.Models
 {
@@ -20,6 +21,7 @@ namespace WebMVC.Models
 
         [Display(Name = "Дата рождения")]
         [DataType(DataType.Date)]
+        [DateValidator(120, ErrorMessage = "Неверная дата рождения")]
         public DateOnly DOB { get; set; }
 
         [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Неверный Email")]
