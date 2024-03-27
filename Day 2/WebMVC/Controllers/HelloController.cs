@@ -16,5 +16,13 @@ namespace WebMVC.Controllers
         {
             return View("Index", m);
         }
+
+        [HttpGet]
+        [Route("hi/{Username?}")]
+        [Route("privet")] //privet?UserName=Sergey
+        public IActionResult Hi(HelloVM m)
+        {
+            return View("Index", m);
+        }
     }
 }
