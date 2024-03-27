@@ -5,12 +5,12 @@ namespace WebDI
     public class HelloMiddleware
     {
         private RequestDelegate _next;
-        private IHello helloSrv;
+        //private IHello helloSrv;
 
-        public HelloMiddleware(RequestDelegate next, IHello hello)
+        public HelloMiddleware(RequestDelegate next/*, IHello hello*/ /*only Singleton or Transient*/)
         {
             this._next = next;
-            this.helloSrv=hello;
+            //this.helloSrv=hello;
         }
 
         public async Task Invoke(HttpContext context, IHello helloSrv3, ICounter conterSrv)
@@ -27,6 +27,8 @@ namespace WebDI
             conterSrv.Increment();
 
             await context.Response.WriteAsync(helloSrv3.GetHelloString() + " " + conterSrv.Get());
+
+            //await context.Response.WriteAsync(helloSrv3.GetHelloString());
             await _next(context);
         }
     }

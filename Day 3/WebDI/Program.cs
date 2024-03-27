@@ -9,7 +9,7 @@ namespace WebDI
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddSingleton<IHello, HelloImpl>();
-            builder.Services.AddTransient<ICounter, CounterImpl>();
+            builder.Services.AddScoped<ICounter, CounterImpl>();
 
             var app = builder.Build();
 
@@ -21,7 +21,8 @@ namespace WebDI
             app.UseMiddleware<HelloMiddleware>();
 
             app.Use(async (context, next) => {
-                var counter = app.Services.GetRequiredService<ICounter>();
+                //var counter = app.Services.GetRequiredService<ICounter>(); // only Singleton or Transient
+                var counter = context.RequestServices.GetRequiredService<ICounter>();
                 counter.Increment();
                 await context.Response.WriteAsync($"<h2>{counter.Get()}<h2>");
 
