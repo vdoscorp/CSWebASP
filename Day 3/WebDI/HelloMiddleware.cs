@@ -1,17 +1,22 @@
-﻿namespace WebDI
+﻿using WebDI.Services;
+
+namespace WebDI
 {
     public class HelloMiddleware
     {
         private RequestDelegate _next;
-        public HelloMiddleware(RequestDelegate next)
+        private IHello helloSrv;
+
+        public HelloMiddleware(RequestDelegate next, IHello hello)
         {
             this._next = next;
+            this.helloSrv=hello;
         }
 
         public async Task Invoke(HttpContext context)
         {
             context.Response.ContentType = "text/html;charset=utf8";
-            await context.Response.WriteAsync("Привет");
+            await context.Response.WriteAsync(helloSrv.GetHelloString());
             await _next(context);
         }
     }
