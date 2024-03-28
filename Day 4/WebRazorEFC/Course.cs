@@ -1,0 +1,13 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WebRazorEFC
+{
+    public class Course
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public int Duration { get; set; }
+        public string Description { get; set; }
+    }
+}
