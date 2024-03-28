@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHello", "WebHello\WebHello.csproj", "{7B2B1800-AB0F-4AFD-91F7-137C94E65DC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHello", "Day 1\WebHello\WebHello.csproj", "{7B2B1800-AB0F-4AFD-91F7-137C94E65DC6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebRouteEndpoints", "WebRouteEndpoints\WebRouteEndpoints.csproj", "{A81048AC-2A2A-4665-BF8E-E092D7644B2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebRouteEndpoints", "Day 1\WebRouteEndpoints\WebRouteEndpoints.csproj", "{A81048AC-2A2A-4665-BF8E-E092D7644B2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMVC", "..\Day 2\WebMVC\WebMVC.csproj", "{977E2FFF-FDCB-4BCC-8799-8F30F8843031}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMVC", "Day 2\WebMVC\WebMVC.csproj", "{977E2FFF-FDCB-4BCC-8799-8F30F8843031}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabMVC", "..\Day 2\LabMVC\LabMVC.csproj", "{7F70A6FC-E823-43CD-8BB0-F08139D6C579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabMVC", "Day 2\LabMVC\LabMVC.csproj", "{7F70A6FC-E823-43CD-8BB0-F08139D6C579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDI", "..\Day 3\WebDI\WebDI.csproj", "{0AB67A19-45A4-4BC8-A324-7C78E32D4530}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebDI", "Day 3\WebDI\WebDI.csproj", "{0AB67A19-45A4-4BC8-A324-7C78E32D4530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebEFC", "Day 4\WebEFC\WebEFC.csproj", "{951064DF-6D09-43C0-95F6-F922FF2B0481}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0AB67A19-45A4-4BC8-A324-7C78E32D4530}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AB67A19-45A4-4BC8-A324-7C78E32D4530}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AB67A19-45A4-4BC8-A324-7C78E32D4530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{951064DF-6D09-43C0-95F6-F922FF2B0481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{951064DF-6D09-43C0-95F6-F922FF2B0481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{951064DF-6D09-43C0-95F6-F922FF2B0481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{951064DF-6D09-43C0-95F6-F922FF2B0481}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
