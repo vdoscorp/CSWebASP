@@ -32,13 +32,18 @@ namespace WebMVC.Test
             var c = new CourseController(new FakeCourseData());
 
             //Act
-            var r = (IEnumerable<Course>)((c.Search("web") as ViewResult)?.ViewData.Model);
+            ViewResult vr = (c.Search("wEb") as ViewResult);
 
             //Assert
-            Assert.All<Course>(r, course => Assert.True(
-                    course.Title.Contains("web") || course.Description.Contains("web")));
+            Assert.Equal(2, vr.ViewData["CoursesCount"]);
 
+            var r = (IEnumerable<Course>)(vr.ViewData.Model);
+            Assert.Equal(2, r.Count());
 
+            Assert.All<Course>(r,
+                course => Assert.True(
+                    course.Title.Contains("web", StringComparison.OrdinalIgnoreCase)
+                    || course.Description.Contains("web", StringComparison.OrdinalIgnoreCase)));
         }
     }
 }

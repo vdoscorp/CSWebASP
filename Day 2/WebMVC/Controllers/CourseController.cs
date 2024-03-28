@@ -29,8 +29,11 @@ namespace WebMVC.Controllers
         [Route("search/{search}")] // higher priority then MapControllerRoute
         public IActionResult Search(string search)
         {
-            return View("List", _courses.Where(c => c.Title.Contains(search, StringComparison.OrdinalIgnoreCase)
-            || c.Description.Contains(search, StringComparison.OrdinalIgnoreCase)));
+            var r = _courses.Where(c => c.Title.Contains(search, StringComparison.OrdinalIgnoreCase)
+                || c.Description.Contains(search, StringComparison.OrdinalIgnoreCase));
+
+            ViewData["CoursesCount"] = r.Count();
+            return View("List", r);
         }
 
         [Route("course/{id:int}")]
