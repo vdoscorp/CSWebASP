@@ -17,7 +17,18 @@
 
         public int Id { get; set; }
         public string Title { get; set; }
-        public int Duration { get; set; }
+
+        int duration;
+        public int Duration
+        {
+            get => (duration / 4) * 4;
+            set
+            {
+                if (value < 8 || value > 48)
+                    throw new ArgumentOutOfRangeException("Course duration out of [8, 48]");
+                duration = (value / 4) * 4;
+            }
+        }
         public string Description { get; set; }
     }
 }
