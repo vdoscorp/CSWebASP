@@ -1,3 +1,4 @@
+using WebMVC.Models;
 using WebMVC.Services;
 
 namespace WebMVC
@@ -9,6 +10,7 @@ namespace WebMVC
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddSingleton<IHello, HelloImpl>();
+            builder.Services.AddSingleton<ICourseData, CourseDataImpl>();
 
             builder.Services.AddLogging();
 
