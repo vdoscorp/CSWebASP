@@ -5,6 +5,7 @@ using WebMVC.Filters;
 namespace WebMVC.Controllers
 {
     [MyActionFilter]
+    [TypeFilter(typeof(ExFilter))]
     public class MyController : Controller
     {
         private ILogger logger;
