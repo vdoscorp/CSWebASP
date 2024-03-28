@@ -7,9 +7,27 @@ namespace WebMVC.Controllers
     [MyActionFilter]
     public class MyController : Controller
     {
+        private ILogger logger;
+
+        public MyController(ILogger<MyController> logger)
+        {
+            this.logger = logger;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
+            try
+            {
+                int a, b = 4, c = 0;
+                a = b / c;
+            }
+            catch (DivideByZeroException ex)
+            {
+                logger.LogError(ex.ToString());
+                throw;
+            }
+
             return View();
         }
 

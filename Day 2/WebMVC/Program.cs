@@ -10,6 +10,8 @@ namespace WebMVC
 
             builder.Services.AddSingleton<IHello, HelloImpl>();
 
+            builder.Services.AddLogging();
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
