@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebMVC.Models;
@@ -27,6 +28,12 @@ namespace WebMVC.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult ErrorEx(int statusCode)
+        {
+            ViewBag.StatusCode = statusCode;
+            return View();
         }
     }
 }

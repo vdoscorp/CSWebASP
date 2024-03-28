@@ -22,6 +22,10 @@ namespace WebMVC
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            //app.UseStatusCodePages();
+            app.UseStatusCodePagesWithReExecute("/Home/ErrorEx?statuscode={0}");
+
             app.UseStaticFiles();
 
             app.UseRouting();
