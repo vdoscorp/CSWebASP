@@ -5,7 +5,7 @@ namespace CoinWeb.Models
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<Coin> Course { get; set; } = null;
+        public DbSet<Coin> Coins { get; set; } = null;
 
         public ApplicationContext() : base () { }
 

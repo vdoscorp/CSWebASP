@@ -21,7 +21,7 @@ namespace CoinWeb.Controllers
         // GET: Coin
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Course.ToListAsync());
+            return View(await _context.Coins.ToListAsync());
         }
 
         // GET: Coin/Details/5
@@ -32,7 +32,7 @@ namespace CoinWeb.Controllers
                 return NotFound();
             }
 
-            var coin = await _context.Course
+            var coin = await _context.Coins
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (coin == null)
             {
@@ -72,7 +72,7 @@ namespace CoinWeb.Controllers
                 return NotFound();
             }
 
-            var coin = await _context.Course.FindAsync(id);
+            var coin = await _context.Coins.FindAsync(id);
             if (coin == null)
             {
                 return NotFound();
@@ -123,7 +123,7 @@ namespace CoinWeb.Controllers
                 return NotFound();
             }
 
-            var coin = await _context.Course
+            var coin = await _context.Coins
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (coin == null)
             {
@@ -138,10 +138,10 @@ namespace CoinWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var coin = await _context.Course.FindAsync(id);
+            var coin = await _context.Coins.FindAsync(id);
             if (coin != null)
             {
-                _context.Course.Remove(coin);
+                _context.Coins.Remove(coin);
             }
 
             await _context.SaveChangesAsync();
@@ -150,7 +150,7 @@ namespace CoinWeb.Controllers
 
         private bool CoinExists(int id)
         {
-            return _context.Course.Any(e => e.Id == id);
+            return _context.Coins.Any(e => e.Id == id);
         }
     }
 }
