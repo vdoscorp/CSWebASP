@@ -35,7 +35,7 @@ namespace CoinWeb
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Coin}/{action=Index}/{id?}");
 
             app.Run();
         }
