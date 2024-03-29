@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebSecured.Models;
 
@@ -18,8 +19,11 @@ public class HomeController : Controller
         return View();
     }
 
+    [Authorize]
     public IActionResult Privacy()
     {
+        ViewBag.UserName = this.User.Identity.Name;
+        ViewBag.AuthType = this.User.Identity.AuthenticationType;
         return View();
     }
 
