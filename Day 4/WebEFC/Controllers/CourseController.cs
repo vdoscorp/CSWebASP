@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using WebEFC.Models;
@@ -23,6 +24,7 @@ namespace WebEFC.Controllers
         }
 
         // GET: Course
+        [OutputCache(Duration = 20, VaryByRouteValueNames = new string[] { "id" })]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Course.ToListAsync());

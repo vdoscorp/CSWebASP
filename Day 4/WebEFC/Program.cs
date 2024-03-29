@@ -14,6 +14,8 @@ namespace WebEFC
 
             builder.Services.AddMemoryCache();
 
+            builder.Services.AddOutputCache();
+
             // Add services to the container.
             builder.Services.AddSqlServer<ApplicationContext>(
                 config.GetConnectionString("DefaultConnection"));
@@ -30,9 +32,12 @@ namespace WebEFC
             }
             app.UseStaticFiles();
 
+            app.UseOutputCache();
+
             app.UseRouting();
 
             app.UseAuthorization();
+
 
             app.MapControllerRoute(
                 name: "default",
