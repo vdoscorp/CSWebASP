@@ -6,16 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CoinWeb.Models;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.AspNetCore.OutputCaching;
+using System.Diagnostics;
 
 namespace CoinWeb.Controllers
 {
     public class CoinController : Controller
     {
         private readonly ApplicationContext _context;
+        private IMemoryCache cache;
 
-        public CoinController(ApplicationContext context)
+        public CoinController(ApplicationContext context, IMemoryCache cache)
         {
             _context = context;
+            this.cache = cache;
         }
 
         // GET: Coin
@@ -32,12 +37,20 @@ namespace CoinWeb.Controllers
                 return NotFound();
             }
 
-            var coin = await _context.Coins
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (coin == null)
+            Coin coin;
+            if (!cache.TryGetValue(id, out coin))
             {
-                return NotFound();
+                coin = await _context.Coins
+                .FirstOrDefaultAsync(m => m.Id == id);
+                if (coin == null)
+                {
+                    return NotFound();
+                }
+                cache.Set(coin.Id, coin,
+                    new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(1)));
             }
+            else
+                Console.WriteLine($"Coin {coin.Id} get from cache");
 
             return View(coin);
         }

@@ -17,6 +17,8 @@ namespace CoinWeb
             builder.Services.AddSqlServer<ApplicationContext>(
                 config.GetConnectionString("DefaultConnection"));
 
+            builder.Services.AddMemoryCache();
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
