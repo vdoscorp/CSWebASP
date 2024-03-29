@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using WebEFC.Models;
 
 namespace WebEFC.Controllers
@@ -12,10 +13,13 @@ namespace WebEFC.Controllers
     public class CourseController : Controller
     {
         private readonly ApplicationContext _context;
+        private IMemoryCache cache;
 
-        public CourseController(ApplicationContext context)
+
+        public CourseController(ApplicationContext context, IMemoryCache cache)
         {
             _context = context;
+            this.cache = cache;
         }
 
         // GET: Course
@@ -32,12 +36,20 @@ namespace WebEFC.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Course
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (course == null)
+            Course course;
+            if (!cache.TryGetValue(id, out course))
             {
-                return NotFound();
+                course = await _context.Course
+                .FirstOrDefaultAsync(m => m.Id == id);
+                if (course == null)
+                {
+                    return NotFound();
+                }
+                cache.Set(course.Id, course,
+                    new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(1)));
             }
+            else
+                Console.WriteLine($"Course {course.Id} get from cache");
 
             return View(course);
         }
