@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHello.Test", "Day 5\WebH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebObjectPool", "Day 5\WebObjectPool\WebObjectPool.csproj", "{9F4CD6F8-E4E9-4F71-8316-ACEE9231BE92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHttps", "Day 5\WebHttps\WebHttps.csproj", "{D39CA26C-D9F8-4F1D-888B-06705DD1DA96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{9F4CD6F8-E4E9-4F71-8316-ACEE9231BE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F4CD6F8-E4E9-4F71-8316-ACEE9231BE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F4CD6F8-E4E9-4F71-8316-ACEE9231BE92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D39CA26C-D9F8-4F1D-888B-06705DD1DA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D39CA26C-D9F8-4F1D-888B-06705DD1DA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D39CA26C-D9F8-4F1D-888B-06705DD1DA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D39CA26C-D9F8-4F1D-888B-06705DD1DA96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
